@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A16E9B6F1ABF395F00C6081A /* farah-faucet.wav in Resources */ = {isa = PBXBuildFile; fileRef = A16E9B6E1ABF395F00C6081A /* farah-faucet.wav */; };
 		A1EA8BA81AB393A20055155E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA8BA71AB393A20055155E /* AppDelegate.swift */; };
 		A1EA8BAA1AB393A20055155E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA8BA91AB393A20055155E /* ViewController.swift */; };
 		A1EA8BAD1AB393A20055155E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EA8BAB1AB393A20055155E /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A16E9B6E1ABF395F00C6081A /* farah-faucet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "farah-faucet.wav"; sourceTree = "<group>"; };
 		A1EA8BA21AB393A20055155E /* Audio Mixer Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio Mixer Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1EA8BA61AB393A20055155E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1EA8BA71AB393A20055155E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		A1EA8BA51AB393A20055155E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A16E9B6E1ABF395F00C6081A /* farah-faucet.wav */,
 				A1EA8BA61AB393A20055155E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -195,6 +198,7 @@
 				A1EA8BAD1AB393A20055155E /* Main.storyboard in Resources */,
 				A1EA8BB21AB393A20055155E /* LaunchScreen.xib in Resources */,
 				A1EA8BAF1AB393A20055155E /* Images.xcassets in Resources */,
+				A16E9B6F1ABF395F00C6081A /* farah-faucet.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +409,7 @@
 				A1EA8BC31AB393A20055155E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1EA8BC41AB393A20055155E /* Build configuration list for PBXNativeTarget "Audio Mixer DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				A1EA8BC61AB393A20055155E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
