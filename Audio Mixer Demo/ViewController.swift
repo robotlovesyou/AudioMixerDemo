@@ -37,10 +37,7 @@ class ViewController: UIViewController {
         // the file into the buffer.
         let file = try? AVAudioFile(forReading: url)
         let buffer = AVAudioPCMBuffer(PCMFormat: file!.processingFormat, frameCapacity: AVAudioFrameCount(file!.length))
-        do {
-            try file!.readIntoBuffer(buffer)
-        } catch _ {
-        }
+        try! file!.readIntoBuffer(buffer)
         
         // This is a reverb with a cathedral preset. It's nice and ethereal
         // You're also setting the wetDryMix which controls the mix between the effect and the 
@@ -79,10 +76,7 @@ class ViewController: UIViewController {
         
         // Start the audio engine
         engine.prepare()
-        do {
-            try engine.start()
-        } catch _ {
-        }
+        try! engine.start()
         
     }
 
