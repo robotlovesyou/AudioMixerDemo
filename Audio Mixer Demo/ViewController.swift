@@ -30,25 +30,28 @@ class ViewController: UIViewController {
         // this is just a demo so I'll let you off.
         // Here you are getting the path for the sound file you added to your project and converting it into a file url.
         let path = NSBundle.mainBundle().pathForResource("farah-faucet", ofType: "wav")!
-        let url = NSURL.fileURLWithPath(path)!
+        let url = NSURL.fileURLWithPath(path)
         
         // Here you are creating an AVAudioFile from the sound file,
         // preparing a buffer of the correct format and length and loading
         // the file into the buffer.
-        var file = AVAudioFile(forReading: url, error: nil)
-        var buffer = AVAudioPCMBuffer(PCMFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length))
-        file.readIntoBuffer(buffer, error: nil)
+        let file = try? AVAudioFile(forReading: url)
+        let buffer = AVAudioPCMBuffer(PCMFormat: file!.processingFormat, frameCapacity: AVAudioFrameCount(file!.length))
+        do {
+            try file!.readIntoBuffer(buffer)
+        } catch _ {
+        }
         
         // This is a reverb with a cathedral preset. It's nice and ethereal
         // You're also setting the wetDryMix which controls the mix between the effect and the 
         // original sound.
-        var reverb = AVAudioUnitReverb()
+        let reverb = AVAudioUnitReverb()
         reverb.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
         reverb.wetDryMix = 50
         
         // This is a distortion with a radio tower preset which works well for speech
         // As distortion tends to be quite loud you're setting the wetDryMix to only 25
-        var distortion = AVAudioUnitDistortion()
+        let distortion = AVAudioUnitDistortion()
         distortion.loadFactoryPreset(AVAudioUnitDistortionPreset.SpeechRadioTower)
         distortion.wetDryMix = 25
         
@@ -76,7 +79,10 @@ class ViewController: UIViewController {
         
         // Start the audio engine
         engine.prepare()
-        engine.startAndReturnError(nil)
+        do {
+            try engine.start()
+        } catch _ {
+        }
         
     }
 
