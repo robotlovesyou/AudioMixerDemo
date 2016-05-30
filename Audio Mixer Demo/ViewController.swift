@@ -21,9 +21,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         engine = AVAudioEngine()
-        playerA = AVAudioPlayerNode()
+//        playerA = AVAudioPlayerNode()
         playerB = AVAudioPlayerNode()
-        playerA.volume = 0.5
+//        playerA.volume = 0.5
         playerB.volume = 0.5
         
         // Tsk tsk, automatically unwrapping optionals is bad form, but
@@ -56,25 +56,25 @@ class ViewController: UIViewController {
         distortion.wetDryMix = 25
         
         // Attach the four nodes to the audio engine
-        engine.attachNode(playerA)
+//        engine.attachNode(playerA)
         engine.attachNode(playerB)
         engine.attachNode(reverb)
         engine.attachNode(distortion)
         
         // Connect playerA to the reverb
-        engine.connect(playerA, to: reverb, format: buffer.format)
-        
-        // Connect the reverb to the mixer
-        engine.connect(reverb, to: engine.mainMixerNode, format: buffer.format)
+//        engine.connect(playerA, to: reverb, format: buffer.format)
         
         // Connect playerB to the distortion
         engine.connect(playerB, to: distortion, format: buffer.format)
         
         // Connect the distortion to the mixer
-        engine.connect(distortion, to: engine.mainMixerNode, format: buffer.format)
+        engine.connect(distortion, to: reverb, format: buffer.format)
+
+        // Connect the reverb to the mixer
+        engine.connect(reverb, to: engine.mainMixerNode, format: buffer.format)
         
         // Schedule playerA and playerB to play the buffer on a loop
-        playerA.scheduleBuffer(buffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
+//        playerA.scheduleBuffer(buffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
         playerB.scheduleBuffer(buffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
         
         // Start the audio engine
@@ -97,20 +97,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(sender: UIButton) {
-        playerA.play()
+//        playerA.play()
         playerB.play()
         togglePlayPauseHidden()
     }
 
     @IBAction func pauseButtonTapped(sender: UIButton) {
-        playerA.pause()
+//        playerA.pause()
         playerB.pause()
         togglePlayPauseHidden()
     }
     
     @IBAction func sliderChanged(sender: UISlider) {
-        playerA.volume = sender.value
-        playerB.volume = 1.0 - sender.value
+        playerB.volume = sender.value
+//        playerB.volume = 1.0 - sender.value
     }
 
 }
